@@ -51,6 +51,9 @@ func main() {
 	log.Println("ルート設定中。。。")
 	routes.SetupTestRoutes(router)
 
+	// 認証ルートを追加
+	routes.SetupAuthRoutes(router)
+
 	// ポート設定
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -65,4 +68,5 @@ func main() {
 	if err := router.Run(":" + port); err != nil {
 		log.Fatalf("サーバー起動に失敗。%v", err)
 	}
+
 }
